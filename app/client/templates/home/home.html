@@ -1,0 +1,24 @@
+<template name="home">
+	<div class="row">
+		<div class="col-sm-8">
+			<div  class="map-container">
+				{{#unless geolocationError}}
+				{{> googleMap name="map" options=mapOptions}}
+				{{else}}
+				Geolocation failed: {{geolocationError}}
+				{{/unless}}
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<h2>Danh sách Bất Động Sản</h2>
+			{{#each houses}}
+			<div class="house" id="{{_id}}">
+				<hr>
+				<h4>{{title}}</h4>
+				<div>{{description}}</div>
+				<div class="price">{{price}}</div>
+			</div>
+			{{/each}}
+		</div>
+	</div>
+</template>
